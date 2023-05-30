@@ -94,33 +94,33 @@ public class adminController implements Initializable {
     }
     @FXML
     public void showImage(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
         imageview02.setImage(image1);
 
     }
     @FXML
     public void showImage1() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
         imageview02.setImage(image1);
 
     }
     @FXML
     public void showImageview1() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\adminRegisterImage.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\adminRegisterImage.png");
         Image logo = new Image(stream);
         adminImageView.setImage(logo);
     }
     @FXML
     public void showImageview2(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\adminRegisterImage.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\adminRegisterImage.png");
         Image logo = new Image(stream);
         adminImageView.setImage(logo);
     }
     @FXML
     public void showImageAdminHome(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\pngwing.com.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\pngwing.com.png");
         Image image2 = new Image(stream);
         adminImageView.setImage(image2);
 
@@ -133,7 +133,7 @@ public class adminController implements Initializable {
 
     @FXML
     public void showImageAdminLoginButton(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\adminIcon.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\adminIcon.png");
         Image image3 = new Image(stream);
         adminImageView.setImage(image3);
 
@@ -145,7 +145,7 @@ public class adminController implements Initializable {
     }
     @FXML
     public void showImageAdminRegisterButton(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\ad-regis-image.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\ad-regis-image.png");
         Image image3 = new Image(stream);
         adminImageView.setImage(image3);
     }
