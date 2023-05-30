@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#showImage" prefHeight="589.0" prefWidth="1131.0" style="-fx-background-color: #e0ebeb;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myjavafx.java16.Controllers.StudentDashBoardViewController">
+    <children>
+        <Label alignment="CENTER" layoutX="285.0" prefHeight="40.0" prefWidth="695.0" text="Welcome To students" textFill="#19334d" AnchorPane.leftAnchor="285.0" AnchorPane.rightAnchor="151.0" AnchorPane.topAnchor="0.0">
+            <font>
+                <Font name="System Bold" size="27.0" />
+            </font>
+        </Label>
+        <AnchorPane prefHeight="589.0" prefWidth="207.0" style="-fx-background-color: #3d5c5c;">
+            <children>
+                <ImageView fx:id="imageview03" fitHeight="184.0" fitWidth="185.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="0.0">
+                    <image>
+                        <Image url="@../../../../../../src/photos/sb1.png" />
+                    </image></ImageView>
+                <Button fx:id="homeButton" layoutX="23.0" layoutY="413.0" mnemonicParsing="false" onAction="#showDashBoardAction" prefHeight="71.0" prefWidth="162.0" text="Home" textFill="#19334d" AnchorPane.bottomAnchor="105.0" AnchorPane.leftAnchor="23.0">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <Button fx:id="homeButton1" layoutX="23.0" layoutY="504.0" mnemonicParsing="false" onAction="#showHello" prefHeight="57.0" prefWidth="162.0" text="LogOut" textFill="#19334d" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="23.0">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+            </children>
+        </AnchorPane>
+        <BorderPane layoutX="207.0" layoutY="38.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="324.0" prefWidth="923.0" AnchorPane.bottomAnchor="227.0" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="38.0">
+         <center>
+              <TableView fx:id="Tableview" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#showOnClick" prefHeight="117.0" prefWidth="504.0" BorderPane.alignment="CENTER">
+                  <columns>
+                      <TableColumn fx:id="columnID" prefWidth="56.0" text="ID" />
+                      <TableColumn fx:id="columnFirstName" prefWidth="147.0" text="FirstName" />
+                      <TableColumn fx:id="columnLastName" prefWidth="139.0" text="LastName" />
+                      <TableColumn fx:id="columnGender" prefWidth="124.0" text="DateOfBirth" />
+                      <TableColumn fx:id="columnDateOfBirth" prefWidth="70.0" text="Gender" />
+                      <TableColumn fx:id="columnEmail" prefWidth="269.0" text="Email" />
+                      <TableColumn fx:id="columnPassword" minWidth="3.0" prefWidth="117.0" text="Password" />
+                  </columns>
+              </TableView>
+         </center></BorderPane>
+        <Pane layoutX="410.0" layoutY="360.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="209.0" prefWidth="554.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="167.0">
+            <children>
+                <Label fx:id="labelFirstName" layoutX="14.0" layoutY="47.0" prefHeight="25.0" prefWidth="73.0" text="First Name" />
+                <Label fx:id="labelLastName" layoutX="14.0" layoutY="80.0" prefHeight="25.0" prefWidth="73.0" text="Last Name" />
+                <Label fx:id="labelDOB" layoutX="14.0" layoutY="119.0" prefHeight="25.0" prefWidth="73.0" text="Date of Birth" />
+                <Label fx:id="labelGender" layoutX="282.0" layoutY="122.0" prefHeight="25.0" prefWidth="73.0" text="Gender" />
+                <TextField fx:id="firstNameTextField" layoutX="87.0" layoutY="47.0" prefHeight="25.0" prefWidth="185.0">
+                    <padding>
+                        <Insets right="50.0" />
+                    </padding>
+                </TextField>
+                <TextField fx:id="LastNameTextField" layoutX="87.0" layoutY="80.0" prefHeight="25.0" prefWidth="185.0">
+                    <padding>
+                        <Insets right="50.0" />
+                    </padding>
+                </TextField>
+                <RadioButton fx:id="maleRadioButton" layoutX="446.0" layoutY="126.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="17.0" prefWidth="98.0" text="Male">
+                    <padding>
+                        <Insets right="50.0" />
+                    </padding>
+                </RadioButton>
+                <RadioButton fx:id="femaleRadioButton" layoutX="373.0" layoutY="126.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="82.0" text="Female" />
+                <DatePicker fx:id="DatePicker" layoutX="87.0" layoutY="115.0" prefHeight="25.0" prefWidth="185.0" promptText="DOB">
+                    <padding>
+                        <Insets right="50.0" />
+                    </padding>
+                </DatePicker>
+                <Label fx:id="EmailLabel" layoutX="282.0" layoutY="13.0" prefHeight="33.0" prefWidth="82.0" text="Email" />
+                <TextField fx:id="EmailText" layoutX="375.0" layoutY="17.0" prefHeight="25.0" prefWidth="170.0" promptText="email" />
+                <TextField fx:id="PasswordText" layoutX="375.0" layoutY="48.0" prefHeight="25.0" prefWidth="170.0" promptText="password" />
+                <Label fx:id="PasswordLabel" layoutX="282.0" layoutY="44.0" prefHeight="33.0" prefWidth="82.0" text="Password" />
+                <Label fx:id="ConfirmPasswordLabel" layoutX="282.0" layoutY="79.0" prefHeight="33.0" prefWidth="82.0" text="Confirm Password" />
+                <TextField fx:id="ConfirmPasswordText" layoutX="375.0" layoutY="83.0" prefHeight="25.0" prefWidth="170.0" promptText="confirm password" />
+
+                <TextField fx:id="IDTextField" layoutX="87.0" layoutY="17.0" prefHeight="25.0" prefWidth="185.0" promptText="   ID">
+                    <padding>
+                        <Insets right="50.0" />
+                    </padding>
+                </TextField>
+               
+                <Button fx:id="clearButton" layoutX="416.0" layoutY="164.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="55.0" text="Clear" />
+                <Button fx:id="searchbtnid" layoutX="350.0" layoutY="164.0" mnemonicParsing="false" onAction="#searchByStudentID" text="Search" />
+            <Button fx:id="showButton1" layoutX="487.0" layoutY="164.0" mnemonicParsing="false" onAction="#shStudent" prefHeight="25.0" prefWidth="55.0" text="Show" />
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

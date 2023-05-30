@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#showImage" prefHeight="589.0" prefWidth="1131.0" style="-fx-background-color: #e0ebeb;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myjavafx.java16.Controllers.adminController">
+   <Label alignment="CENTER" layoutX="343.0" layoutY="23.0" prefHeight="17.0" prefWidth="294.0" text="Administrator" textFill="#19334d" AnchorPane.leftAnchor="343.0" AnchorPane.rightAnchor="169.0">
+      <font>
+         <Font name="System Bold" size="27.0" />
+      </font>
+   </Label>
+   <AnchorPane layoutY="-5.0" prefHeight="595.0" prefWidth="190.0" style="-fx-background-color: #3d5c5c;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-5.0">
+      <ImageView fx:id="imageview02" fitHeight="220.0" fitWidth="186.0" layoutX="4.0" onMouseMoved="#showImage" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="4.0" AnchorPane.topAnchor="0.0">
+         <Image url="@../../../../../photos/sb1.png" />
+      </ImageView>
+      <Button fx:id="adminLoginButton" layoutX="8.0" layoutY="520.0" mnemonicParsing="false" onAction="#showAdminLoginView" onMouseEntered="#showImageAdminLoginButton" onMouseExited="#exitShowImageAdminLoginButton" prefHeight="66.0" prefWidth="174.0" style="-fx-background-color: #e0ebeb;" text="Login" textFill="#19334d" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="8.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="homeButton" layoutX="8.0" layoutY="409.0" mnemonicParsing="false" onAction="#showHello" onMouseEntered="#showImageAdminHome" onMouseExited="#exitShowImageAdminHome" prefHeight="82.0" prefWidth="174.0" style="-fx-background-color: #e0ebeb;" text="Home" textFill="#19334d" AnchorPane.bottomAnchor="98.0" AnchorPane.leftAnchor="8.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </AnchorPane>
+   <BorderPane layoutX="283.0" layoutY="181.0" prefHeight="386.0" prefWidth="461.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="283.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="181.0">
+      <top>
+         <ImageView fx:id="adminImageView" fitHeight="329.0" fitWidth="408.0" onMouseMoved="#showImageview2" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+            <Image url="@../../../../../photos/adminRegisterImage.png" />
+         </ImageView>
+      </top>
+   </BorderPane>
+</AnchorPane>
