@@ -55,7 +55,7 @@ public class StudentRegistrationController implements Initializable {
 
     @FXML
     public void showImage(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
         imageview04.setImage(image1);
 

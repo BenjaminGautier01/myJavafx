@@ -43,7 +43,7 @@ public class HelloController implements Initializable {
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("admin-view.fxml"));
         Parent root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        //Image image = new Image("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\sb.jpg");
+        Image image = new Image(System.getProperty("user.dir") + "\\src\\sb.jpg");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -75,7 +75,7 @@ public class HelloController implements Initializable {
 
     @FXML
     public void showImage(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
 
         imageview01.setImage(image1);
@@ -83,7 +83,7 @@ public class HelloController implements Initializable {
     }
     @FXML
     public void showImageIconLogo() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
 
         imageview01.setImage(image1);
@@ -92,7 +92,7 @@ public class HelloController implements Initializable {
 
     @FXML
     public void showImage1(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\admin.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\admin.png");
         Image image1 = new Image(stream);
         imageview.setImage(image1);
 
@@ -104,7 +104,7 @@ public class HelloController implements Initializable {
     }
     @FXML
     public void showImage2(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\student.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\student.png");
         Image image2 = new Image(stream);
         imageview.setImage(image2);
     }
@@ -114,7 +114,7 @@ public class HelloController implements Initializable {
     }
     @FXML
     public void showImage3(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\chatbot.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\chatbot.png");
         Image image3 = new Image(stream);
         imageview.setImage(image3);
     }
@@ -124,14 +124,14 @@ public class HelloController implements Initializable {
     }
     @FXML
     public void showImageviewLogo(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\pngwing.com.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\pngwing.com.png");
         Image logo = new Image(stream);
         imageview.setImage(logo);
 
     }
     @FXML
     public void showImageview() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\pngwing.com.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\pngwing.com.png");
         Image logo = new Image(stream);
         imageview.setImage(logo);
 

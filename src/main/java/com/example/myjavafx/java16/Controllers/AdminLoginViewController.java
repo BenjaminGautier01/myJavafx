@@ -164,7 +164,7 @@ public class AdminLoginViewController implements Initializable {
     }
     @FXML
     public void showImage(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
         imageview05.setImage(image1);
 
@@ -172,7 +172,7 @@ public class AdminLoginViewController implements Initializable {
 
     @FXML
     public void showImageview() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\adminIcon-removebg-preview.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\adminIcon-removebg-preview.png");
         Image image2 = new Image(stream);
         imageviewAdminLogin.setImage(image2);
     }

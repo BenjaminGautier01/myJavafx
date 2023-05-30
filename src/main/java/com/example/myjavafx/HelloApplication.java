@@ -50,7 +50,7 @@ public class HelloApplication extends Application implements Initializable {
 
             Primarystage.setTitle("Student Information System");
             AnchorPane anchorPane = new AnchorPane();
-            InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png ");
+            InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
             Image image = new Image(stream);
             Primarystage.setResizable(true);
             Primarystage.getIcons().add(image);

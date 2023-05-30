@@ -68,7 +68,7 @@ public class RegentChatBot extends DataBaseConnection implements Initializable {
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Parent root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png ");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png ");
         Image image1 = new Image(stream);
         stage.setResizable(true);
         stage.getIcons().add(image1);
@@ -79,7 +79,7 @@ public class RegentChatBot extends DataBaseConnection implements Initializable {
     }
     @FXML
     public void showImage(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
         imageviewStudent.setImage(image1);
 
@@ -87,7 +87,7 @@ public class RegentChatBot extends DataBaseConnection implements Initializable {
 
     @FXML
     public void showImageIcon() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
         imageviewStudent.setImage(image1);
 

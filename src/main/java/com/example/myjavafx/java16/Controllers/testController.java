@@ -98,7 +98,7 @@ public class testController extends Application implements Initializable {
 
     @FXML
     public void showTestImageview() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\adminpic-removebg-preview.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\adminpic-removebg-preview.png");
         Image logo = new Image(stream);
         testImageview.setImage(logo);
 

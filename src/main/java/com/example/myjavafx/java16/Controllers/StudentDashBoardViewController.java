@@ -335,14 +335,14 @@ public class StudentDashBoardViewController extends DataBaseConnection implement
     }
     @FXML
     public void showImage(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
         imageview03.setImage(image1);
 
     }
     @FXML
     public void showImage() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
         imageview03.setImage(image1);
 
@@ -358,7 +358,7 @@ public class StudentDashBoardViewController extends DataBaseConnection implement
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Student Information System");
         AnchorPane anchorPane = new AnchorPane();
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png ");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png ");
         Image image = new Image(stream);
         stage.setResizable(true);
         stage.getIcons().add(image);
@@ -383,7 +383,7 @@ public class StudentDashBoardViewController extends DataBaseConnection implement
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Student Information System");
         AnchorPane anchorPane = new AnchorPane();
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png ");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png ");
         Image image = new Image(stream);
         stage.setResizable(true);
         stage.getIcons().add(image);
@@ -408,7 +408,7 @@ public class StudentDashBoardViewController extends DataBaseConnection implement
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Student Information System");
         AnchorPane anchorPane = new AnchorPane();
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png ");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png ");
         Image image = new Image(stream);
         stage.setResizable(true);
         stage.getIcons().add(image);
@@ -433,7 +433,7 @@ public class StudentDashBoardViewController extends DataBaseConnection implement
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Student Information System");
         AnchorPane anchorPane = new AnchorPane();
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png ");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png ");
         Image image = new Image(stream);
         stage.setResizable(true);
         stage.getIcons().add(image);
@@ -461,7 +461,7 @@ public class StudentDashBoardViewController extends DataBaseConnection implement
         Parent root = loader.load();
         stage.setTitle("Student Information System");
         AnchorPane anchorPane = new AnchorPane();
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png ");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png ");
         Image image = new Image(stream);
         stage.setResizable(true);
         stage.getIcons().add(image);

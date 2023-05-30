@@ -94,21 +94,21 @@ public  class Console extends OutputStream implements Initializable {
 
     @FXML
     public void showImage(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
         imageviewStudent.setImage(image1);
 
     }
     @FXML
     public void showImageIcon() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
         imageviewStudent.setImage(image1);
 
     }
     @FXML
     public void showImageStudentHome(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\pngwing.com.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\pngwing.com.png");
         Image image2 = new Image(stream);
         studentImageviewhome.setImage(image2);
 
@@ -120,13 +120,13 @@ public  class Console extends OutputStream implements Initializable {
 
     @FXML
     public void showImageview1() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\studentPhoto.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\studentPhoto.png");
         Image StudentLogo = new Image(stream);
         studentImageviewhome.setImage(StudentLogo);
     }
     @FXML
     public void showImageview2(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\studentPhoto.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\studentPhoto.png");
         Image StudentLogo = new Image(stream);
         studentImageviewhome.setImage(StudentLogo);
         showImageview1();

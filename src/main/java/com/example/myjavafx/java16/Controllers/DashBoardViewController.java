@@ -109,7 +109,7 @@ public class DashBoardViewController extends OutputStream implements Initializab
 
     @FXML
     public void showImageIcon() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
         imageviewStudent.setImage(image1);
 
@@ -122,14 +122,14 @@ public class DashBoardViewController extends OutputStream implements Initializab
 
     @FXML
     public void showImageview1() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\studentPhoto.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\studentPhoto.png");
         Image StudentLogo = new Image(stream);
         studentImageviewhome.setImage(StudentLogo);
     }
 
     @FXML
     public void showImageview2(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\studentPhoto.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\studentPhoto.png");
         Image StudentLogo = new Image(stream);
         studentImageviewhome.setImage(StudentLogo);
         showImageview1();
@@ -138,7 +138,7 @@ public class DashBoardViewController extends OutputStream implements Initializab
 
     @FXML
     public void showImageNW(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
 
         imageviewiconsb1.setImage(image1);
@@ -147,7 +147,7 @@ public class DashBoardViewController extends OutputStream implements Initializab
 
     @FXML
     public void showImageIconLogo() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
 
         imageviewiconsb1.setImage(image1);
@@ -156,7 +156,7 @@ public class DashBoardViewController extends OutputStream implements Initializab
 
     @FXML
     public void showImageH1(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\m1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\m1.png");
         Image image1 = new Image(stream);
         CenterImageview.setImage(image1);
 
@@ -170,7 +170,7 @@ public class DashBoardViewController extends OutputStream implements Initializab
 
     @FXML
     public void showImageL1(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\m2.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\m2.png");
         Image image1 = new Image(stream);
         CenterImageview.setImage(image1);
 
@@ -184,7 +184,7 @@ public class DashBoardViewController extends OutputStream implements Initializab
 
     @FXML
     public void showImageS1(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\m3.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\m3.png");
         Image image1 = new Image(stream);
         CenterImageview.setImage(image1);
 
@@ -198,7 +198,7 @@ public class DashBoardViewController extends OutputStream implements Initializab
 
     @FXML
     public void showImageK1(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\m4.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\m4.png");
         Image image1 = new Image(stream);
         CenterImageview.setImage(image1);
 
@@ -212,7 +212,7 @@ public class DashBoardViewController extends OutputStream implements Initializab
 
     @FXML
     public void showImageW1(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\m5.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\m5.png");
         Image image1 = new Image(stream);
         CenterImageview.setImage(image1);
 
@@ -226,14 +226,14 @@ public class DashBoardViewController extends OutputStream implements Initializab
 
     @FXML
     public void showImage(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\yp-removebg-preview.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\yp-removebg-preview.png");
         Image image1 = new Image(stream);
         CenterImageview.setImage(image1);
 
     }
 
     public void showImageNow() throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\yp-removebg-preview.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\yp-removebg-preview.png");
         Image image1 = new Image(stream);
         CenterImageview.setImage(image1);
 
@@ -287,7 +287,7 @@ public class DashBoardViewController extends OutputStream implements Initializab
     }
     @FXML
     public void showImageStudentHome(MouseEvent event) throws FileNotFoundException {
-        InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\pngwing.com.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\pngwing.com.png");
         Image image2 = new Image(stream);
         studentImageviewhome.setImage(image2);
 

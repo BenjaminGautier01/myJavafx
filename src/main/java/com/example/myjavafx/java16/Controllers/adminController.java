@@ -148,7 +148,6 @@ public class adminController implements Initializable {
         InputStream stream = new FileInputStream("C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\ad-regis-image.png");
         Image image3 = new Image(stream);
         adminImageView.setImage(image3);
-
     }
     @FXML
     public void exitShowImageAdminRegisterButton(MouseEvent event) throws FileNotFoundException {
