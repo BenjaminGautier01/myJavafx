@@ -107,7 +107,7 @@ public class AdminDashBoardView1Controller extends DataBaseConnection implements
     @FXML
     public ObservableList<Admin> getAdministrators() throws SQLException {
         ObservableList<Admin> adminList = FXCollections.observableArrayList();
-        databaseLink = DriverManager.getConnection(url,databaseUser,databasePassword);
+        databaseLink = getDatabaseConnection();
         String query = "SELECT * FROM sis.admin";
         Statement statement;
         ResultSet resultSet;
@@ -140,7 +140,7 @@ public class AdminDashBoardView1Controller extends DataBaseConnection implements
 
     @FXML
     public void addAdmin(ActionEvent event) throws SQLException {
-        databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
+        databaseLink = getDatabaseConnection();
         System.out.println("databaseLink = " + databaseLink);
 
         String firstName = firstNameTextField.getText();
@@ -174,39 +174,46 @@ public class AdminDashBoardView1Controller extends DataBaseConnection implements
     }
     @FXML
     public void updateAdmin(ActionEvent event) throws SQLException {
-        databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
+        databaseLink = getDatabaseConnection();
         System.out.println("databaseLink = " + databaseLink);
 
-        Integer ID = Integer.parseInt(IDTextField.getText());
-        String firstName = firstNameTextField.getText();
-        String lastName = LastNameTextField.getText();
-        String email = EmailText.getText();
-        String password = PasswordText.getText();
-        String ConfirmPassword = ConfirmPasswordText.getText();
-        String dateOfBirth = String.valueOf(DatePicker.getValue());
-        String gender = null;
+        try
+        {
+            Integer ID = Integer.parseInt(IDTextField.getText());
+            String firstName = firstNameTextField.getText();
+            String lastName = LastNameTextField.getText();
+            String email = EmailText.getText();
+            String password = PasswordText.getText();
+            String ConfirmPassword = ConfirmPasswordText.getText();
+            String dateOfBirth = String.valueOf(DatePicker.getValue());
+            String gender = null;
 
-        if (maleRadioButton.isSelected()) {
-            gender = maleRadioButton.getText();
+            if (maleRadioButton.isSelected()) {
+                gender = maleRadioButton.getText();
+            }
+            if (femaleRadioButton.isSelected()) {
+                gender = femaleRadioButton.getText();
+            }
+
+            String sql_query = "UPDATE sis.admin SET AdminID=?, FirstName=?, LastName=?, Gender=?, DateOfBirth=?, Email=?, Password=?, ConfirmPassword=?, DateRegistered=NOW() WHERE AdminID=?";
+            PreparedStatement statement = databaseLink.prepareStatement(sql_query);
+
+            statement.setInt(   1, ID);
+            statement.setString(2, firstName);
+            statement.setString(3, lastName);
+            statement.setString(4, gender);
+            statement.setString(5, dateOfBirth);
+            statement.setString(6, email);
+            statement.setString(7, password);
+            statement.setString(8, ConfirmPassword );
+            statement.setInt(   9, ID);
+            statement.executeUpdate();
+            statement.close();
         }
-        if (femaleRadioButton.isSelected()) {
-            gender = femaleRadioButton.getText();
+        catch (Exception E)
+        {
+            System.out.println(E.getMessage());
         }
-
-        String sql_query = "UPDATE sis.admin SET AdminID=?, FirstName=?, LastName=?, Gender=?, DateOfBirth=?, Email=?, Password=?, ConfirmPassword=?, DateRegistered=NOW() WHERE AdminID=?";
-        PreparedStatement statement = databaseLink.prepareStatement(sql_query);
-
-        statement.setInt(   1, ID);
-        statement.setString(2, firstName);
-        statement.setString(3, lastName);
-        statement.setString(4, gender);
-        statement.setString(5, dateOfBirth);
-        statement.setString(6, email);
-        statement.setString(7, password);
-        statement.setString(8, ConfirmPassword );
-        statement.setInt(   9, ID);
-        statement.executeUpdate();
-        statement.close();
         showAdmin();
     }
     //IDTextField.setText(String.valueOf(admin.getId()));
@@ -238,17 +245,24 @@ public class AdminDashBoardView1Controller extends DataBaseConnection implements
     }
     @FXML
     public void deleteAdmin(ActionEvent event) throws SQLException {
-        databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
-        System.out.println("databaseLink = " + databaseLink);
+        try
+        {
+            databaseLink = getDatabaseConnection();
+            System.out.println("databaseLink = " + databaseLink);
 
-        Integer ID = Integer.valueOf(IDTextField.getText());
+            Integer ID = Integer.valueOf(IDTextField.getText());
 
-        String sql_query = "DELETE FROM sis.admin WHERE AdminID=?";
-        PreparedStatement statement = databaseLink.prepareStatement(sql_query);
+            String sql_query = "DELETE FROM sis.admin WHERE AdminID=?";
+            PreparedStatement statement = databaseLink.prepareStatement(sql_query);
 
-        statement.setInt(1, ID);
-        statement.executeUpdate();
-        statement.close();
+            statement.setInt(1, ID);
+            statement.executeUpdate();
+            statement.close();
+        }
+        catch (Exception E)
+        {
+
+        }
         showAdmin();
     }
 
@@ -471,46 +485,53 @@ public class AdminDashBoardView1Controller extends DataBaseConnection implements
     @FXML
     public void SearchAdmin(ActionEvent event) throws SQLException {
         // Make sure that the database connection is established before executing the query
-        getDatabaseConnection();
+        databaseLink = getDatabaseConnection();
         // Get the student ID from the input field
-        Integer adminID = Integer.valueOf(IDTextField.getText());
+        try
+        {
+            Integer adminID = Integer.valueOf(IDTextField.getText());
 
 
 
-        // Prepare the SQL query
-        String sql_query = "SELECT * FROM sis.admin WHERE AdminID = ?";
-        PreparedStatement statement = databaseLink.prepareStatement(sql_query);
+            // Prepare the SQL query
+            String sql_query = "SELECT * FROM sis.admin WHERE AdminID = ?";
+            PreparedStatement statement = databaseLink.prepareStatement(sql_query);
 
-        try {
-            // Set the parameter values for the prepared statement
-            statement.setInt(1, adminID);
+            try {
+                // Set the parameter values for the prepared statement
+                statement.setInt(1, adminID);
 
-            // Execute the query and retrieve the result set
-            ResultSet resultSet = statement.executeQuery();
+                // Execute the query and retrieve the result set
+                ResultSet resultSet = statement.executeQuery();
 
-            // Process the result set and update the table view
-            ObservableList<Admin> adminList = FXCollections.observableArrayList();
-            while (resultSet.next()) {
-                Admin myAdmin = new Admin(
-                        resultSet.getInt("AdminID"),
-                        resultSet.getString("FirstName"),
-                        resultSet.getString("LastName"),
-                        resultSet.getString("Gender"),
-                        resultSet.getString("DateOfBirth"),
-                        resultSet.getString("Email"),
-                        resultSet.getString("Password"),
-                        resultSet.getString("Confirmpassword"));
+                // Process the result set and update the table view
+                ObservableList<Admin> adminList = FXCollections.observableArrayList();
+                while (resultSet.next()) {
+                    Admin myAdmin = new Admin(
+                            resultSet.getInt("AdminID"),
+                            resultSet.getString("FirstName"),
+                            resultSet.getString("LastName"),
+                            resultSet.getString("Gender"),
+                            resultSet.getString("DateOfBirth"),
+                            resultSet.getString("Email"),
+                            resultSet.getString("Password"),
+                            resultSet.getString("Confirmpassword"));
 
-                adminList.add(myAdmin);
+                    adminList.add(myAdmin);
 
-            }Tableview.setItems(adminList);
+                }Tableview.setItems(adminList);
 
 
-            // Close the statement and result set
-            statement.close();
-            resultSet.close();
-        }catch(SQLException e) {
-            System.out.println(e.getMessage());
+                // Close the statement and result set
+                statement.close();
+                resultSet.close();
+            }catch(SQLException e) {
+                System.out.println(e.getMessage());
+
+            }
+        }
+        catch (Exception E)
+        {
 
         }
 

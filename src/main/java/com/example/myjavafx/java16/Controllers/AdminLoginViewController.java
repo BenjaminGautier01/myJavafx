@@ -1,6 +1,7 @@
 package com.example.myjavafx.java16.Controllers;
 
 import com.example.myjavafx.database.DatabaseConnection;
+import com.example.myjavafx.java16.DataBase.DataBaseConnection;
 import com.example.myjavafx.HelloApplication;
 import javafx.application.HostServices;
 import javafx.event.ActionEvent;
@@ -32,7 +33,7 @@ import java.sql.Connection;
 
 import static com.example.myjavafx.database.DatabaseConnection.*;
 
-public class AdminLoginViewController implements Initializable {
+public class AdminLoginViewController extends DataBaseConnection implements Initializable {
 
     public Button homeButton;
     public Button ButtonLogin;
@@ -57,8 +58,6 @@ public class AdminLoginViewController implements Initializable {
     public Label AdminLoginLabel;
 
 
-    public DatabaseConnection databaseConnection;
-    public Connection databaseLink;
     @FXML
     public Label loginErrorLabel;
 
@@ -75,7 +74,7 @@ public class AdminLoginViewController implements Initializable {
         }
 
         try {
-            databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
+            databaseLink = getDatabaseConnection();
             String query = "SELECT * FROM sis.admin WHERE Email = ? AND Password = ?";
             PreparedStatement statement = databaseLink.prepareStatement(query);
             statement.setString(1, email);

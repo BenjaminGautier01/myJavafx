@@ -125,7 +125,7 @@ public class DepartmentDashBoardViewController extends DataBaseConnection implem
     public ObservableList<Student> getStudentsAndDepartment() throws SQLException {
         try {
             ObservableList<Student> studentDepartmentList = FXCollections.observableArrayList();
-            databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
+            databaseLink = getDatabaseConnection();
             getDatabaseConnection();
             String role ="Default";
 
@@ -223,91 +223,115 @@ public class DepartmentDashBoardViewController extends DataBaseConnection implem
 
     @FXML
     public void addDepartment(ActionEvent event) throws SQLException {
-        databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
-        getStudentsAndDepartment();
-        System.out.println("databaseLink = " + databaseLink);
+        databaseLink = getDatabaseConnection();
+        try
+        {
+            getStudentsAndDepartment();
+            System.out.println("databaseLink = " + databaseLink);
 
-        String firstName = firstNameTextField.getText();
-        String lastName = LastNameTextField.getText();
-        Integer DepartmentID = Integer.parseInt(DepartmentIDText.getText());
-        String DepartmentName = DepartmentNameText.getText();
-        String email = EmailText.getText();
+            String firstName = firstNameTextField.getText();
+            String lastName = LastNameTextField.getText();
+            Integer DepartmentID = Integer.parseInt(DepartmentIDText.getText());
+            String DepartmentName = DepartmentNameText.getText();
+            String email = EmailText.getText();
 
-        String sql_query = "INSERT INTO sis.student (FirstName, LastName, DepartmentID, DepartmentName, Email) VALUES (?, ?, ?, ?, ?)";
-        PreparedStatement statement = databaseLink.prepareStatement(sql_query);
+            String sql_query = "INSERT INTO sis.student (FirstName, LastName, DepartmentID, DepartmentName, Email) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement statement = databaseLink.prepareStatement(sql_query);
 
-        statement.setString(1, firstName);
-        statement.setString(2, lastName);
-        statement.setInt(3, DepartmentID);
-        statement.setString(4, DepartmentName);
-        statement.setString(5, email);
-        statement.executeUpdate();
-        statement.close();
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            statement.setInt(3, DepartmentID);
+            statement.setString(4, DepartmentName);
+            statement.setString(5, email);
+            statement.executeUpdate();
+            statement.close();
+        }
+        catch (Exception E)
+        {
+
+        }
         showDepartment();
     }
     @FXML
     public void updateDepartment(ActionEvent event) throws SQLException {
         //databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
         //System.out.println("databaseLink = " + databaseLink);
-        getDatabaseConnection();
-        Integer ID = Integer.valueOf(IDTextField.getText());
-        String firstName = firstNameTextField.getText();
-        String lastName = LastNameTextField.getText();
-        Integer DepartmentID = Integer.parseInt(DepartmentIDText.getText());
-        String DepartmentName = DepartmentNameText.getText();
-        String email = EmailText.getText();
+        databaseLink = getDatabaseConnection();
 
-        //String sql_query = "UPDATE sis.admin SET AdminID=?, FirstName=?, LastName=?, Gender=?, DateOfBirth=?, Email=?, Password=?, ConfirmPassword=?, DateRegistered=NOW() WHERE AdminID=?";
-        String student_query ="UPDATE sis.student SET StudentID =?, FirstName=?, LastName=?,DepartmentID=?, DepartmentName=?, Email=? WHERE StudentID=?";
-        PreparedStatement statement = databaseLink.prepareStatement(student_query);
+        try
+        {
+            Integer ID = Integer.valueOf(IDTextField.getText());
+            String firstName = firstNameTextField.getText();
+            String lastName = LastNameTextField.getText();
+            Integer DepartmentID = Integer.parseInt(DepartmentIDText.getText());
+            String DepartmentName = DepartmentNameText.getText();
+            String email = EmailText.getText();
 
-        statement.setInt(   1, ID);
-        statement.setString(2, firstName);
-        statement.setString(3, lastName);
-        statement.setInt(4, DepartmentID);
-        statement.setString(5, DepartmentName);
-        statement.setString(6, email);
-        statement.setInt(7, ID);
-        statement.executeUpdate();
-        statement.close();
+            //String sql_query = "UPDATE sis.admin SET AdminID=?, FirstName=?, LastName=?, Gender=?, DateOfBirth=?, Email=?, Password=?, ConfirmPassword=?, DateRegistered=NOW() WHERE AdminID=?";
+            String student_query ="UPDATE sis.student SET StudentID =?, FirstName=?, LastName=?,DepartmentID=?, DepartmentName=?, Email=? WHERE StudentID=?";
+            PreparedStatement statement = databaseLink.prepareStatement(student_query);
+
+            statement.setInt(   1, ID);
+            statement.setString(2, firstName);
+            statement.setString(3, lastName);
+            statement.setInt(4, DepartmentID);
+            statement.setString(5, DepartmentName);
+            statement.setString(6, email);
+            statement.setInt(7, ID);
+            statement.executeUpdate();
+            statement.close();
+        }
+        catch (Exception E)
+        {
+
+        }
         showDepartment();
     }
     @FXML
     public void searchByStudentID(ActionEvent event) throws SQLException {
 
-        // Get the student ID from the input field
-        Integer studentID = Integer.valueOf(IDTextField.getText());
 
-        // Make sure that the database connection is established before executing the query
-        getDatabaseConnection();
+        databaseLink = getDatabaseConnection();
 
-        // Prepare the SQL query
-        String sql_query = "SELECT * FROM sis.student WHERE StudentID = ?";
-        PreparedStatement statement = databaseLink.prepareStatement(sql_query);
+        try{
+            // Get the student ID from the input field
+            Integer studentID = Integer.valueOf(IDTextField.getText());
 
-        // Set the parameter values for the prepared statement
-        statement.setInt(1, studentID);
+            // Make sure that the database connection is established before executing the query
+            getDatabaseConnection();
 
-        // Execute the query and retrieve the result set
-        ResultSet resultSet = statement.executeQuery();
+            // Prepare the SQL query
+            String sql_query = "SELECT * FROM sis.student WHERE StudentID = ?";
+            PreparedStatement statement = databaseLink.prepareStatement(sql_query);
 
-        // Process the result set and update the table view
-        ObservableList<Student> DepartmentList = FXCollections.observableArrayList();
-        while (resultSet.next()) {
-            Student student = new Student(
-                    resultSet.getInt("StudentID"),
-                    resultSet.getString("FirstName"),
-                    resultSet.getString("LastName"),
-                    resultSet.getInt("DepartmentID"),
-                    resultSet.getString("DepartmentName"),
-                    resultSet.getString("Email"));
-            DepartmentList.add(student);
+            // Set the parameter values for the prepared statement
+            statement.setInt(1, studentID);
+
+            // Execute the query and retrieve the result set
+            ResultSet resultSet = statement.executeQuery();
+
+            // Process the result set and update the table view
+            ObservableList<Student> DepartmentList = FXCollections.observableArrayList();
+            while (resultSet.next()) {
+                Student student = new Student(
+                        resultSet.getInt("StudentID"),
+                        resultSet.getString("FirstName"),
+                        resultSet.getString("LastName"),
+                        resultSet.getInt("DepartmentID"),
+                        resultSet.getString("DepartmentName"),
+                        resultSet.getString("Email"));
+                DepartmentList.add(student);
+            }
+            TableviewID.setItems(DepartmentList);
+
+            // Close the statement and result set
+            statement.close();
+            resultSet.close();
         }
-        TableviewID.setItems(DepartmentList);
+        catch (Exception E)
+        {
 
-        // Close the statement and result set
-        statement.close();
-        resultSet.close();
+        }
     }
 
     //IDTextField.setText(String.valueOf(admin.getId()));
@@ -341,17 +365,22 @@ public class DepartmentDashBoardViewController extends DataBaseConnection implem
     }
     @FXML
     public void deleteDepartment(ActionEvent event) throws SQLException {
-        databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
-        System.out.println("databaseLink = " + databaseLink);
+        databaseLink = getDatabaseConnection();
+        try
+        {
+            Integer ID = Integer.valueOf(IDTextField.getText());
 
-        Integer ID = Integer.valueOf(IDTextField.getText());
+            String sql_query = "DELETE FROM sis.student WHERE StudentID=?";
+            PreparedStatement statement = databaseLink.prepareStatement(sql_query);
 
-        String sql_query = "DELETE FROM sis.student WHERE StudentID=?";
-        PreparedStatement statement = databaseLink.prepareStatement(sql_query);
+            statement.setInt(1, ID);
+            statement.executeUpdate();
+            statement.close();
+        }
+        catch (Exception E)
+        {
 
-        statement.setInt(1, ID);
-        statement.executeUpdate();
-        statement.close();
+        }
         showDepartment();
     }
 

@@ -2,6 +2,7 @@ package com.example.myjavafx.java16.Controllers;
 
 import com.example.myjavafx.database.DatabaseConnection;
 import com.example.myjavafx.HelloApplication;
+import com.example.myjavafx.java16.DataBase.DataBaseConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +27,7 @@ import java.util.ResourceBundle;
 
 import static com.example.myjavafx.database.DatabaseConnection.*;
 
-public class StudentLoginViewController implements Initializable {
+public class StudentLoginViewController extends DataBaseConnection implements Initializable {
 
     public Button homeButton;
     public Button ButtonLogin;
@@ -70,13 +71,16 @@ public class StudentLoginViewController implements Initializable {
             return;
         }
 
-        try {
-            databaseLink = DriverManager.getConnection(url,databaseUser,databasePassword);
+        try
+        {
+            databaseLink = getDatabaseConnection();
             String query = "SELECT * FROM sis.student WHERE Email = ? AND Password = ?";
             PreparedStatement statement = databaseLink.prepareStatement(query);
             statement.setString(1, email);
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
+
+
 
             if (resultSet.next()) {
                 // Login successful

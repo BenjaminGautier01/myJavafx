@@ -110,7 +110,7 @@ public class StudentDashBoardViewController extends DataBaseConnection implement
     @FXML
     public ObservableList<Student> getStudents() throws SQLException {
         ObservableList<Student> studentList = FXCollections.observableArrayList();
-        databaseLink = DriverManager.getConnection(url,databaseUser,databasePassword);
+        databaseLink = getDatabaseConnection();
         String query = "SELECT * FROM sis.student";
         Statement statement;
         ResultSet resultSet;
@@ -142,11 +142,13 @@ public class StudentDashBoardViewController extends DataBaseConnection implement
     }
     @FXML
     public void searchByStudentID(ActionEvent event) throws SQLException {
+    try
+    {
         // Get the student ID from the input field
         Integer studentID = Integer.valueOf(IDTextField.getText());
 
         // Make sure that the database connection is established before executing the query
-        getDatabaseConnection();
+        databaseLink = getDatabaseConnection();
 
         // Prepare the SQL query
         String sql_query = "SELECT * FROM sis.student WHERE StudentID = ?";
@@ -184,13 +186,18 @@ public class StudentDashBoardViewController extends DataBaseConnection implement
             System.out.println(e.getMessage());
 
         }
+    }
+    catch (Exception E)
+    {
+
+    }
 
     }
 
 
     @FXML
     public void addStudent(ActionEvent event) throws SQLException {
-        databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
+        databaseLink = getDatabaseConnection();
         System.out.println("databaseLink = " + databaseLink);
 
         String firstName = firstNameTextField.getText();
@@ -224,40 +231,47 @@ public class StudentDashBoardViewController extends DataBaseConnection implement
     }
     @FXML
     public void updateStudent(ActionEvent event) throws SQLException {
-        databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
-        System.out.println("databaseLink = " + databaseLink);
+        databaseLink = getDatabaseConnection();
 
-        Integer ID = Integer.valueOf(IDTextField.getText());
-        String firstName = firstNameTextField.getText();
-        String lastName = LastNameTextField.getText();
-        String email = EmailText.getText();
-        String password = PasswordText.getText();
-        String ConfirmPassword = ConfirmPasswordText.getText();
-        String dateOfBirth = String.valueOf(DatePicker.getValue());
-        String gender = null;
+        try
+        {
+            Integer ID = Integer.valueOf(IDTextField.getText());
+            String firstName = firstNameTextField.getText();
+            String lastName = LastNameTextField.getText();
+            String email = EmailText.getText();
+            String password = PasswordText.getText();
+            String ConfirmPassword = ConfirmPasswordText.getText();
+            String dateOfBirth = String.valueOf(DatePicker.getValue());
+            String gender = null;
 
-        if (maleRadioButton.isSelected()) {
-            gender = maleRadioButton.getText();
+            if (maleRadioButton.isSelected()) {
+                gender = maleRadioButton.getText();
+            }
+            if (femaleRadioButton.isSelected()) {
+                gender = femaleRadioButton.getText();
+            }
+
+            //String sql_query = "UPDATE sis.admin SET AdminID=?, FirstName=?, LastName=?, Gender=?, DateOfBirth=?, Email=?, Password=?, ConfirmPassword=?, DateRegistered=NOW() WHERE AdminID=?";
+            String student_query ="UPDATE sis.student SET StudentID =?, FirstName=?, LastName=?, Gender=?,DateOfBirth=?, Email=?, Password=?, Confirmpassword=?, DateRegistered=NOW() WHERE StudentID=?";
+            PreparedStatement statement = databaseLink.prepareStatement(student_query);
+
+            statement.setInt(   1, ID);
+            statement.setString(2, firstName);
+            statement.setString(3, lastName);
+            statement.setString(4, gender);
+            statement.setString(5, dateOfBirth);
+            statement.setString(6, email);
+            statement.setString(7, password);
+            statement.setString(8, ConfirmPassword );
+            statement.setInt(   9, ID);
+            statement.executeUpdate();
+            statement.close();
         }
-        if (femaleRadioButton.isSelected()) {
-            gender = femaleRadioButton.getText();
+        catch (Exception E)
+        {
+
         }
 
-        //String sql_query = "UPDATE sis.admin SET AdminID=?, FirstName=?, LastName=?, Gender=?, DateOfBirth=?, Email=?, Password=?, ConfirmPassword=?, DateRegistered=NOW() WHERE AdminID=?";
-        String student_query ="UPDATE sis.student SET StudentID =?, FirstName=?, LastName=?, Gender=?,DateOfBirth=?, Email=?, Password=?, Confirmpassword=?, DateRegistered=NOW() WHERE StudentID=?";
-        PreparedStatement statement = databaseLink.prepareStatement(student_query);
-
-        statement.setInt(   1, ID);
-        statement.setString(2, firstName);
-        statement.setString(3, lastName);
-        statement.setString(4, gender);
-        statement.setString(5, dateOfBirth);
-        statement.setString(6, email);
-        statement.setString(7, password);
-        statement.setString(8, ConfirmPassword );
-        statement.setInt(   9, ID);
-        statement.executeUpdate();
-        statement.close();
         showStudent();
     }
     //IDTextField.setText(String.valueOf(admin.getId()));
@@ -289,17 +303,25 @@ public class StudentDashBoardViewController extends DataBaseConnection implement
     }
     @FXML
     public void deleteStudent(ActionEvent event) throws SQLException {
-        databaseLink = DriverManager.getConnection(url, databaseUser, databasePassword);
-        System.out.println("databaseLink = " + databaseLink);
+        databaseLink = getDatabaseConnection();
 
-        Integer ID = Integer.valueOf(IDTextField.getText());
+        try
+        {
+            System.out.println("databaseLink = " + databaseLink);
 
-        String sql_query = "DELETE FROM sis.student WHERE StudentID=?";
-        PreparedStatement statement = databaseLink.prepareStatement(sql_query);
+            Integer ID = Integer.valueOf(IDTextField.getText());
 
-        statement.setInt(1, ID);
-        statement.executeUpdate();
-        statement.close();
+            String sql_query = "DELETE FROM sis.student WHERE StudentID=?";
+            PreparedStatement statement = databaseLink.prepareStatement(sql_query);
+
+            statement.setInt(1, ID);
+            statement.executeUpdate();
+            statement.close();
+        }
+        catch (Exception E)
+        {
+
+        }
         showStudent();
     }
 
