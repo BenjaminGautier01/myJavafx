@@ -68,7 +68,7 @@ public class RegentChatBot extends DataBaseConnection implements Initializable {
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Parent root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png ");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
         stage.setResizable(true);
         stage.getIcons().add(image1);

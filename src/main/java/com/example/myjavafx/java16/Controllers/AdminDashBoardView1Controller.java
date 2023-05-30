@@ -290,7 +290,7 @@ public class AdminDashBoardView1Controller extends DataBaseConnection implements
     }
     @FXML
     public void showImage() throws FileNotFoundException {
-        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "C:\\Users\\benja\\source\\my-java-projects\\myJavafx\\src\\photos\\sb1.png");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image1 = new Image(stream);
         imageview03.setImage(image1);
 
@@ -336,7 +336,7 @@ public class AdminDashBoardView1Controller extends DataBaseConnection implements
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Student Information System");
         AnchorPane anchorPane = new AnchorPane();
-        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png ");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image = new Image(stream);
         stage.setResizable(true);
         stage.getIcons().add(image);
@@ -361,7 +361,7 @@ public class AdminDashBoardView1Controller extends DataBaseConnection implements
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Student Information System");
         AnchorPane anchorPane = new AnchorPane();
-        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png ");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image = new Image(stream);
         stage.setResizable(true);
         stage.getIcons().add(image);
@@ -387,7 +387,7 @@ public class AdminDashBoardView1Controller extends DataBaseConnection implements
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Student Information System");
         AnchorPane anchorPane = new AnchorPane();
-        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png ");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image = new Image(stream);
         stage.setResizable(true);
         stage.getIcons().add(image);
@@ -412,7 +412,7 @@ public class AdminDashBoardView1Controller extends DataBaseConnection implements
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Student Information System");
         AnchorPane anchorPane = new AnchorPane();
-        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png ");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image = new Image(stream);
         stage.setResizable(true);
         stage.getIcons().add(image);
@@ -437,7 +437,7 @@ public class AdminDashBoardView1Controller extends DataBaseConnection implements
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Student Information System");
         AnchorPane anchorPane = new AnchorPane();
-        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png ");
+        InputStream stream = new FileInputStream(System.getProperty("user.dir") + "\\src\\photos\\sb1.png");
         Image image = new Image(stream);
         stage.setResizable(true);
         stage.getIcons().add(image);

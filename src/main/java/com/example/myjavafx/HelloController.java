@@ -43,7 +43,7 @@ public class HelloController implements Initializable {
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("admin-view.fxml"));
         Parent root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Image image = new Image(System.getProperty("user.dir") + "\\src\\sb.jpg");
+        Image image = new Image("file:///" + System.getProperty("user.dir") + "\\src\\sb.jpg");
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
