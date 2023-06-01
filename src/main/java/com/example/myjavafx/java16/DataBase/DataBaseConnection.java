@@ -1,5 +1,6 @@
 package com.example.myjavafx.java16.DataBase;
 
+import java.io.BufferedReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -22,10 +23,14 @@ public class DataBaseConnection {
 
             try
             {
-                databaseUser = new FileReader(System.getProperty("user.dir") + "\\src\\sql_credentials\\sql_usr.txt").toString();
-                databasePassword = new FileReader(System.getProperty("user.dir") + "\\src\\sql_credentials\\sql_pass.txt").toString();
+                BufferedReader usr_reader = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\sql_credentials\\sql_usr.txt"));
+                BufferedReader pass_reader = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\sql_credentials\\sql_pass.txt"));
 
-                databaseLink = DriverManager.getConnection("jdbc:mysql://localhost/?useTimeZone=true&serverTimezone=UTC&user=root&password=password");
+
+                databaseUser = usr_reader.readLine();;
+                databasePassword = pass_reader.readLine();
+
+                databaseLink = DriverManager.getConnection(url, "root", "password");
 
                 //System.out.println("databaseLink = " + databaseLink);
                 System.out.println("DatabaseLink Established Database Connection Successful!");
